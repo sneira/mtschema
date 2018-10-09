@@ -150,9 +150,9 @@ class VehicleControllerSpec extends HibernateSpec implements ControllerUnitTest<
         controller.delete(existingVehicle.id)
 
         then: 'The instance is deleted'
-        vehicleGormService.count() == 0
         response.redirectedUrl == '/vehicles'
         flash.message != null
+        vehicleGormService.count() == old(vehicleGormService.count()) - 1
     }
 
 }

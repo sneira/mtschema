@@ -15,7 +15,10 @@ class VehicleControllerSpec extends HibernateSpec implements ControllerUnitTest<
 
     @Override
     Map getConfiguration() {
-        [(Settings.SETTING_MULTI_TENANT_RESOLVER_CLASS): SystemPropertyTenantResolver]
+        [
+                (Settings.SETTING_MULTI_TENANT_RESOLVER_CLASS): SystemPropertyTenantResolver,
+                'hibernate.flush.mode': 'AUTO'
+        ]
     }
 
     VehicleGormService vehicleGormService

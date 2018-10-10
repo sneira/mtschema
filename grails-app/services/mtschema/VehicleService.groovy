@@ -4,9 +4,7 @@ import grails.gorm.multitenancy.CurrentTenant
 import grails.gorm.transactions.Transactional
 import groovy.transform.CompileStatic
 
-@Transactional
 @CompileStatic
-@CurrentTenant
 class VehicleService {
 
     VehicleGormService vehicleGormService

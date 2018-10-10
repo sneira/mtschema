@@ -13,7 +13,7 @@ interface IVehicleGormService {
 
     Vehicle save(String model, Integer year)
 
-    Vehicle delete(Serializable id)
+    void delete(Serializable id)
 }
 
 @Service(Vehicle)

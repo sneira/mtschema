@@ -35,12 +35,12 @@ class VehicleServiceSpec extends HibernateSpec implements ServiceUnitTest<Vehicl
         then:
         vehiculo
         service.obtenerVehiculo(vehiculo.id)
-        service.listarVehiculos().size() == 1
+        service.countVehicles() == 1
 
         when:
         service.borrar(vehiculo.id)
 
         then:
-        service.listarVehiculos().size() == old(service.listarVehiculos().size()) - 1
+        service.countVehicles() == old(service.countVehicles()) - 1
     }
 }

@@ -11,6 +11,10 @@ class VehicleService {
 
     VehicleGormService vehicleGormService
 
+    int countVehicles() {
+        vehicleGormService.count()
+    }
+
     List<Vehicle> listarVehiculos() {
         vehicleGormService.list([:])
     }

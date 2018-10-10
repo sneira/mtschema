@@ -4,8 +4,12 @@ import grails.test.hibernate.HibernateSpec
 import grails.testing.services.ServiceUnitTest
 import org.grails.datastore.mapping.config.Settings
 import org.grails.datastore.mapping.multitenancy.resolvers.SystemPropertyTenantResolver
+import org.springframework.test.annotation.Rollback
 
 class VehicleServiceSpec extends HibernateSpec implements ServiceUnitTest<VehicleService> {
+
+    @Override
+    List<Class> getDomainClasses() { [Vehicle] }
 
     @Override
     Map getConfiguration() {

@@ -11,6 +11,9 @@ import spock.lang.Stepwise
 class VehicleControllerSpec extends HibernateSpec implements ControllerUnitTest<VehicleController> {
 
     @Override
+    List<Class> getDomainClasses() { [Vehicle] }
+
+    @Override
     Map getConfiguration() {
         [(Settings.SETTING_MULTI_TENANT_RESOLVER_CLASS): SystemPropertyTenantResolver]
     }

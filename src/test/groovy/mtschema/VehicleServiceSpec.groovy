@@ -8,8 +8,14 @@ import org.grails.datastore.mapping.multitenancy.resolvers.SystemPropertyTenantR
 class VehicleServiceSpec extends HibernateSpec implements ServiceUnitTest<VehicleService> {
 
     @Override
+    List<Class> getDomainClasses() { [Vehicle] }
+
+    @Override
     Map getConfiguration() {
-        [(Settings.SETTING_MULTI_TENANT_RESOLVER_CLASS): SystemPropertyTenantResolver]
+        [
+                (Settings.SETTING_MULTI_TENANT_RESOLVER_CLASS): SystemPropertyTenantResolver,
+                'hibernate.flush.mode': 'AUTO'
+        ]
     }
 
     def setup() {
@@ -35,12 +41,12 @@ class VehicleServiceSpec extends HibernateSpec implements ServiceUnitTest<Vehicl
         then:
         vehiculo
         service.obtenerVehiculo(vehiculo.id)
-        service.listarVehiculos().size() == 1
+        service.countVehicles() == 1
 
         when:
         service.borrar(vehiculo.id)
 
         then:
-        service.listarVehiculos().size() == 0
+        service.countVehicles() == old(service.countVehicles()) - 1
     }
 }

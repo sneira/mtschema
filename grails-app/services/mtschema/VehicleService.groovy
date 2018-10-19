@@ -4,12 +4,14 @@ import grails.gorm.multitenancy.CurrentTenant
 import grails.gorm.transactions.Transactional
 import groovy.transform.CompileStatic
 
-@Transactional
 @CompileStatic
-@CurrentTenant
 class VehicleService {
 
     VehicleGormService vehicleGormService
+
+    int countVehicles() {
+        vehicleGormService.count()
+    }
 
     List<Vehicle> listarVehiculos() {
         vehicleGormService.list([:])

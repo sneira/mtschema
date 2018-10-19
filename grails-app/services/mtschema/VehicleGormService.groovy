@@ -4,19 +4,21 @@ import grails.gorm.multitenancy.CurrentTenant
 import grails.gorm.services.Service
 import grails.gorm.transactions.Transactional
 
+interface IVehicleGormService {
+    List<Vehicle> list(Map args)
+
+    Integer count()
+
+    Vehicle find(Serializable id)
+
+    Vehicle save(String model, Integer year)
+
+    void delete(Serializable id)
+}
+
 @Service(Vehicle)
 @CurrentTenant
-abstract class VehicleGormService {
-
-    abstract List<Vehicle> list(Map args)
-
-    abstract Integer count()
-
-    abstract Vehicle find(Serializable id)
-
-    abstract Vehicle save(String model, Integer year)
-
-    abstract Vehicle delete(Serializable id)
+abstract class VehicleGormService implements IVehicleGormService {
 
     @Transactional
     Vehicle update( Serializable id, String model, Integer year) {

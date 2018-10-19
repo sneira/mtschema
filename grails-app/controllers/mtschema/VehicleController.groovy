@@ -62,13 +62,8 @@ class VehicleController {
     }
 
     def delete(Long id) {
-        Vehicle vehicle = vehicleGormService.delete(id)
-        if (vehicle == null) {
-            notFound()
-        }
-        else {
-            flash.message = 'Vehicle Deleted'
-            redirect action: 'index', method: 'GET'
-        }
+        vehicleGormService.delete(id)
+        flash.message = 'Vehicle Deleted'
+        redirect action: 'index', method: 'GET'
     }
 }

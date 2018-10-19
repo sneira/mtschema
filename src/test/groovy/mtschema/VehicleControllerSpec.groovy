@@ -11,14 +11,19 @@ import spock.lang.Stepwise
 class VehicleControllerSpec extends HibernateSpec implements ControllerUnitTest<VehicleController> {
 
     @Override
+    List<Class> getDomainClasses() { [Vehicle] }
+
+    @Override
     Map getConfiguration() {
-        [(Settings.SETTING_MULTI_TENANT_RESOLVER_CLASS): SystemPropertyTenantResolver]
+        [
+                (Settings.SETTING_MULTI_TENANT_RESOLVER_CLASS): SystemPropertyTenantResolver,
+                'hibernate.flush.mode': 'AUTO'
+        ]
     }
 
     VehicleGormService vehicleGormService
 
     def setup() {
-        // System.setProperty(SystemPropertyTenantResolver.PROPERTY_NAME, 'audi')
         System.setProperty(SystemPropertyTenantResolver.PROPERTY_NAME, 'PRUEBA')
         vehicleGormService = hibernateDatastore.getService(VehicleGormService)
         controller.vehicleGormService = vehicleGormService
@@ -150,9 +155,9 @@ class VehicleControllerSpec extends HibernateSpec implements ControllerUnitTest<
         controller.delete(existingVehicle.id)
 
         then: 'The instance is deleted'
-        vehicleGormService.count() == 0
         response.redirectedUrl == '/vehicles'
         flash.message != null
+        vehicleGormService.count() == old(vehicleGormService.count()) - 1
     }
 
 }

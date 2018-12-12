@@ -86,9 +86,12 @@ class VehicleControllerSpec extends HibernateSpec implements ControllerUnitTest<
     void 'Prueba'() {
         when:
         controller.save('Xantia', 1996)
+        Vehicle vehicle = vehicleGormService.list()?.first()
 
         then:
         vehicleGormService.count() == 1
+        vehicle
+        vehicle.model == 'preInsert'
     }
 
     void 'Test that the show action returns 404 for an invalid id'() {

@@ -40,6 +40,7 @@ class VehicleServiceSpec extends HibernateSpec implements ServiceUnitTest<Vehicl
 
         then:
         vehicle
+        vehicle.model == 'preInsert'
         service.getVehicle(vehicle.id)
         service.countVehicles() == 1
 

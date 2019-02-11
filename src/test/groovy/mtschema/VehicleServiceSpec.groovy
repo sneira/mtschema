@@ -23,28 +23,28 @@ class VehicleServiceSpec extends HibernateSpec implements ServiceUnitTest<Vehicl
         service.vehicleGormService = hibernateDatastore.getService(VehicleGormService)
     }
 
-    void "Prueba de lista"() {
+    void "List vehicles"() {
         expect:
-        !service.listarVehiculos()
+        !service.listVehicles()
     }
 
-    void "Obtener vehículo"() {
+    void "Get vehicle"() {
         when:
-        Vehicle vehiculo = service.obtenerVehiculo(1)
+        Vehicle vehicle = service.getVehicle(1)
 
         then:
-        !vehiculo
+        !vehicle
 
         when:
-        vehiculo = service.crear('Xantia', 1997)
+        vehicle = service.create('Xantia', 1997)
 
         then:
-        vehiculo
-        service.obtenerVehiculo(vehiculo.id)
+        vehicle
+        service.getVehicle(vehicle.id)
         service.countVehicles() == 1
 
         when:
-        service.borrar(vehiculo.id)
+        service.delete(vehicle.id)
 
         then:
         service.countVehicles() == old(service.countVehicles()) - 1

@@ -10,13 +10,13 @@ class VehicleListenerService {
 
     @Listener(Vehicle)
     void onPreInsertEvent(PreInsertEvent event) {
-        println "*** En preInsert de Vehicle"
+        println "*** Vehicle preInsert"
         event.entityAccess.setProperty('model', 'preInsert')
     }
 
     @Listener(Vehicle)
     void onPreUpdateEvent(PreUpdateEvent event) {
-        println "*** En preUpdate de Vehicle"
+        println "*** Vehicle preUpdate"
         event.entityAccess.setProperty('model', 'preUpdate')
     }
 

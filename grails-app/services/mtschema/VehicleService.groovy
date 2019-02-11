@@ -1,7 +1,5 @@
 package mtschema
 
-import grails.gorm.multitenancy.CurrentTenant
-import grails.gorm.transactions.Transactional
 import groovy.transform.CompileStatic
 
 @CompileStatic
@@ -13,23 +11,23 @@ class VehicleService {
         vehicleGormService.count()
     }
 
-    List<Vehicle> listarVehiculos() {
+    List<Vehicle> listVehicles() {
         vehicleGormService.list([:])
     }
 
-    Vehicle obtenerVehiculo(Long id) {
+    Vehicle getVehicle(Long id) {
         vehicleGormService.find(id)
     }
 
-    Vehicle actualizar(Long id, String model, Integer year) {
+    Vehicle update(Long id, String model, Integer year) {
         vehicleGormService.update(id, model, year)
     }
 
-    Vehicle crear(String model, Integer year) {
+    Vehicle create(String model, Integer year) {
         vehicleGormService.save(model, year)
     }
 
-    Vehicle borrar(Long id) {
+    void delete(Long id) {
         vehicleGormService.delete(id)
     }
 

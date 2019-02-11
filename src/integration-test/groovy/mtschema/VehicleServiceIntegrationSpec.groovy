@@ -13,33 +13,33 @@ class VehicleServiceIntegrationSpec extends Specification {
         System.setProperty(SystemPropertyTenantResolver.PROPERTY_NAME, 'PRUEBA')
     }
 
-    void "Prueba de lista"() {
+    void "List vehicles"() {
         expect:
-        !vehicleService.listarVehiculos()
+        !vehicleService.listVehicles()
     }
 
-    void "Obtener vehículo"() {
+    void "Get vehicle"() {
         when:
-        Vehicle vehiculo = Vehicle.withNewSession {
-            vehicleService.obtenerVehiculo(1)
+        Vehicle vehicle = Vehicle.withNewSession {
+            vehicleService.getVehicle(1)
         }
 
         then:
-        !vehiculo
+        !vehicle
 
         when:
-        vehiculo = vehicleService.crear('Xantia', 1997)
+        vehicle = vehicleService.create('Xantia', 1997)
 
         then:
-        vehiculo
-        vehicleService.obtenerVehiculo(vehiculo.id)
-        vehicleService.listarVehiculos().size() == 1
+        vehicle
+        vehicleService.getVehicle(vehicle.id)
+        vehicleService.listVehicles().size() == 1
 
         when:
-        vehicleService.borrar(vehiculo.id)
+        vehicleService.delete(vehicle.id)
 
         then:
-        vehicleService.listarVehiculos().size() == 0
+        vehicleService.listVehicles().size() == 0
     }
 
 }

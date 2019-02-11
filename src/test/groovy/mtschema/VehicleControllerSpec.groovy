@@ -83,7 +83,7 @@ class VehicleControllerSpec extends HibernateSpec implements ControllerUnitTest<
         vehicleGormService.count() == 1
     }
 
-    void 'Prueba'() {
+    void 'Test that the listener works'() {
         when:
         controller.save('Xantia', 1996)
         Vehicle vehicle = vehicleGormService.list()?.first()

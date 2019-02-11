@@ -9,6 +9,6 @@ class Vehicle implements MultiTenant<Vehicle> {
 
     static constraints = {
         model blank: false
-        year min: 1980
+        year min: 1950
     }
 }

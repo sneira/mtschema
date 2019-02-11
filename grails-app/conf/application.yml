@@ -103,12 +103,12 @@ environments:
         dataSource:
             logSql: true
             dbCreate: create-drop
-            url: jdbc:h2:mem:devDb;INIT=CREATE SCHEMA IF NOT EXISTS prueba;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:h2:mem:devDb;INIT=CREATE SCHEMA IF NOT EXISTS test;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     test:
         dataSource:
             logSql: true
             dbCreate: create-drop
-            url: jdbc:h2:mem:testDb;INIT=CREATE SCHEMA IF NOT EXISTS prueba;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:h2:mem:testDb;INIT=CREATE SCHEMA IF NOT EXISTS test;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
 #        dataSource:
 #            pooled: true
 #            jmxExport: true

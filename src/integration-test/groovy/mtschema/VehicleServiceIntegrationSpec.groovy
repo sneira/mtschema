@@ -10,7 +10,7 @@ class VehicleServiceIntegrationSpec extends Specification {
     VehicleService vehicleService
 
     def setupSpec() {
-        System.setProperty(SystemPropertyTenantResolver.PROPERTY_NAME, 'PRUEBA')
+        System.setProperty(SystemPropertyTenantResolver.PROPERTY_NAME, 'TEST')
     }
 
     void "List vehicles"() {

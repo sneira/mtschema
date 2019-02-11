@@ -24,7 +24,7 @@ class VehicleControllerSpec extends HibernateSpec implements ControllerUnitTest<
     VehicleGormService vehicleGormService
 
     def setup() {
-        System.setProperty(SystemPropertyTenantResolver.PROPERTY_NAME, 'PRUEBA')
+        System.setProperty(SystemPropertyTenantResolver.PROPERTY_NAME, 'TEST')
         vehicleGormService = hibernateDatastore.getService(VehicleGormService)
         controller.vehicleGormService = vehicleGormService
         println "----- Setup: ${vehicleGormService.count()} -----"

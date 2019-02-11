@@ -19,7 +19,7 @@ class VehicleServiceSpec extends HibernateSpec implements ServiceUnitTest<Vehicl
     }
 
     def setup() {
-        System.setProperty(SystemPropertyTenantResolver.PROPERTY_NAME, 'PRUEBA')
+        System.setProperty(SystemPropertyTenantResolver.PROPERTY_NAME, 'TEST')
         service.vehicleGormService = hibernateDatastore.getService(VehicleGormService)
     }
 

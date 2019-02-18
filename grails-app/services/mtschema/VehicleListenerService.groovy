@@ -1,6 +1,5 @@
 package mtschema
 
-import grails.events.annotation.gorm.Listener
 import groovy.transform.CompileStatic
 import org.grails.datastore.mapping.core.Datastore
 import org.grails.datastore.mapping.engine.event.AbstractPersistenceEvent
@@ -15,18 +14,6 @@ class VehicleListenerService extends AbstractPersistenceEventListener {
     protected VehicleListenerService(Datastore datastore) {
         super(datastore)
         println " --- Constructor. Datastore parámetro: ${datastore}. Datastore final: ${this.datastore}"
-    }
-
-    @Listener(Vehicle)
-    void onPreInsertEvent(PreInsertEvent event) {
-        println "*** Vehicle preInsert: ${event.entityAccess.getProperty('model')}. Source: ${event.source}. Datastore: ${this.datastore}. Evento ${event}"
-        event.entityAccess.setProperty('model', 'preInsert')
-    }
-
-    @Listener(Vehicle)
-    void onPreUpdateEvent(PreUpdateEvent event) {
-        println "*** Vehicle preUpdate: ${event.entityAccess.getProperty('model')}. Source: ${event.source}. Datastore: ${this.datastore}. Evento ${event}"
-        event.entityAccess.setProperty('model', 'preUpdate')
     }
 
     @Override

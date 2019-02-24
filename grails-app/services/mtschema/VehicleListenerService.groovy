@@ -4,6 +4,7 @@ import groovy.transform.CompileStatic
 import org.grails.datastore.mapping.core.Datastore
 import org.grails.datastore.mapping.engine.event.AbstractPersistenceEvent
 import org.grails.datastore.mapping.engine.event.AbstractPersistenceEventListener
+import org.grails.datastore.mapping.engine.event.EventType
 import org.grails.datastore.mapping.engine.event.PreInsertEvent
 import org.grails.datastore.mapping.engine.event.PreUpdateEvent
 import org.springframework.context.ApplicationEvent
@@ -19,7 +20,9 @@ class VehicleListenerService extends AbstractPersistenceEventListener {
     @Override
     protected void onPersistenceEvent(AbstractPersistenceEvent event) {
         println ">>> onPersistenceEvent: ${event.entityAccess.getProperty('model')}. Source: ${event.source}. Datastore: ${this.datastore}. Evento ${event}"
-        event.entityAccess.setProperty('model', 'onPersistenceEvent')
+        String newModel = event.eventType == EventType.PreInsert ? 'preInsert' : 'preUpdate'
+        println ">>>>>> ${newModel}"
+        event.entityAccess.setProperty('model', newModel)
     }
 
     @Override

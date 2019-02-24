@@ -1,6 +1,5 @@
 package mtschema
 
-import grails.gorm.multitenancy.Tenants
 import org.grails.orm.hibernate.HibernateDatastore
 
 class BootStrap {

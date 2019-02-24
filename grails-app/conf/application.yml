@@ -103,7 +103,7 @@ environments:
         dataSource:
             logSql: true
             dbCreate: create-drop
-            url: jdbc:h2:mem:devDb;INIT=CREATE SCHEMA IF NOT EXISTS test\;CREATE SCHEMA IF NOT EXISTS tres;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
+            url: jdbc:h2:mem:devDb;INIT=CREATE SCHEMA IF NOT EXISTS test\;CREATE SCHEMA IF NOT EXISTS test2;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
     test:
         dataSource:
             logSql: true

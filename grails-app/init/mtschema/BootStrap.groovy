@@ -8,10 +8,10 @@ class BootStrap {
     HibernateDatastore hibernateDatastore
 
     def init = { servletContext ->
-        println " -- En bootstrap"
+        println " -- Bootstrap init"
         def ctx = grailsApplication.mainContext
-        ['TEST', 'TRES'].each { String name ->
-            println " ---- Registrando ${name}"
+        ['TEST', 'TEST2'].each { String name ->
+            println " ---- Registering ${name}"
             HibernateDatastore ds = hibernateDatastore.getDatastoreForConnection(name)
             VehicleListenerService listener = new VehicleListenerService(ds)
             ctx.addApplicationListener(listener)

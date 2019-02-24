@@ -14,12 +14,11 @@ class VehicleListenerService extends AbstractPersistenceEventListener {
 
     protected VehicleListenerService(Datastore datastore) {
         super(datastore)
-        println " --- Constructor. Datastore parámetro: ${datastore}. Datastore final: ${this.datastore}"
     }
 
     @Override
     protected void onPersistenceEvent(AbstractPersistenceEvent event) {
-        println ">>> onPersistenceEvent: ${event.entityAccess.getProperty('model')}. Source: ${event.source}. Datastore: ${this.datastore}. Evento ${event}"
+        println ">>> onPersistenceEvent: ${event.entityAccess.getProperty('model')}. Source: ${event.source}. Datastore: ${this.datastore}. Event: ${event}"
         String newModel = event.eventType == EventType.PreInsert ? 'preInsert' : 'preUpdate'
         println ">>>>>> ${newModel}"
         event.entityAccess.setProperty('model', newModel)
